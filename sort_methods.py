@@ -67,13 +67,22 @@ def merge(left, right):
         j += 1
     return result
 
-def quick_sort(strings):
-    if len(strings) <= 1:
-        return strings
-    pivot = strings[0]
-    less = [s for s in strings[1:] if s <= pivot]
-    greater = [s for s in strings[1:] if s > pivot]
-    return quick_sort(less) + [pivot] + quick_sort(greater)
+def quick_sort(strings, low, high):
+    if low < high:
+        pivot = partition(strings, low, high)
+        quick_sort(strings, low, pivot-1)
+        quick_sort(strings, pivot+1, high)
+    return strings
+
+def partition(strings, low, high):
+    pivot = strings[high]
+    i = low - 1
+    for j in range(low, high):
+        if strings[j] <= pivot:
+            i += 1
+            strings[i], strings[j] = strings[j], strings[i]
+    strings[i+1], strings[high] = strings[high], strings[i+1]
+    return i + 1
 
 def heap_sort(strings):
     n = len(strings)
