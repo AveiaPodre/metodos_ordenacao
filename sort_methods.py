@@ -82,14 +82,15 @@ def heap_sort(strings):
     for i in range(n-1, 0, -1):
         strings[i], strings[0] = strings[0], strings[i]
         heapify(strings, i, 0)
+    return strings
 
 def heapify(strings, n, i):
     largest = i
     l = 2 * i + 1
     r = 2 * i + 2
-    if l < n and strings[l] > strings[largest]:
+    if l < n and strings[i] < strings[l]:
         largest = l
-    if r < n and strings[r] > strings[largest]:
+    if r < n and strings[largest] < strings[r]:
         largest = r
     if largest != i:
         strings[i], strings[largest] = strings[largest], strings[i]
