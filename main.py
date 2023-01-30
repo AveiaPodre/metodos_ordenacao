@@ -5,9 +5,10 @@ from sort_methods import *
 import sys
 sys.setrecursionlimit(1500)
 
-file10k = open('nomes10k.txt', 'r',  encoding = 'utf-8')
+file10k = open('nomes500k.txt', 'r',  encoding = 'utf-8')
 namelist = file10k.readlines()
 
+""""
 #descobre o tempo de execução do bubble sort para o arquivo
 listbubble = namelist
 timebubble = time.time()
@@ -57,4 +58,5 @@ timeheap = time.time()
 listheap = heap_sort(listheap)
 print("tempo de execução do heap sort: " + str(time.time() - timeheap))
 
+"""
 file10k.close()
